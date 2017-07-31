@@ -12,8 +12,18 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from pathlib import Path
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Go up one directory since we're in a module now
+from decouple import config
+
+BASE_DIR = Path(os.path.dirname(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))).resolve()
+
+# Start custom settings
+BOOKIT_USERNAME = config('BOOKIT_USERNAME')
+BOOKIT_PASSWORD = config('BOOKIT_PASSWORD')
+# End custom settings
 
 
 # Quick-start development settings - unsuitable for production
@@ -100,6 +110,43 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# LOGGING
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'mapit': {
+            'handlers': ['console'],
+            'level': 'INFO'
+        }
+    }
+}
 
 
 # Internationalization
