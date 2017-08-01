@@ -18,6 +18,8 @@ var/
 
 # Serverless directories
 .serverless
+node_modules
+secrets.*.yml
 
 # Databases
 db.sqlite3

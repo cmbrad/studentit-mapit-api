@@ -1,0 +1,15 @@
+{
+  "name": "studentit-mapit-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-secrets-plugin": "0.0.1",
+    "serverless-wsgi": "^1.2.1"
+  }
+}
