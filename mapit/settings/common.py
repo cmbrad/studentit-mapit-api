@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import socket
 
 from pathlib import Path
 
@@ -38,10 +37,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTHENTICATION_BACKENDS = ['mapit.bookit.authentication.BookItBackend']
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
-    'UNAUTHENTICATED_USER': None,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'mapit.bookit.authentication.BookItBackend',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
 }
 
 # Application definition
@@ -91,7 +96,12 @@ WSGI_APPLICATION = 'mapit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite'),
+    }
+}
 
 
 # Password validation
@@ -141,6 +151,7 @@ LOGGING = {
         'django': {
             'handlers': ['console'],
             'propagate': True,
+            'level': 'INFO'
         },
         'mapit': {
             'handlers': ['console'],
