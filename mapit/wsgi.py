@@ -10,11 +10,10 @@ https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
-
+from mapit.bookit.startup import Startup
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mapit.settings")
 
-from mapit.bookit.startup import Startup
 startup = Startup()
 startup.run()
 

@@ -1,1 +1,1 @@
-from .bookit_backend import BookItBackend
+from .bookit_backend import BookItBackend  # noqa

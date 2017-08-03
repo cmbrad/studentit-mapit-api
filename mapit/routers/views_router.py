@@ -2,6 +2,7 @@ from django.conf.urls import url
 from rest_framework import routers, viewsets
 from rest_framework.urlpatterns import format_suffix_patterns
 
+
 class ViewsRouter(routers.DefaultRouter):
     """
     Extends functionality of DefaultRouter adding possibility

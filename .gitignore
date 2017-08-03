@@ -33,3 +33,10 @@ mapit/static
 # Python randomness
 *.pyc
 __pycache__
+
+.cache/
+.coverage
+coverage/
+db.sqlite
+package-lock.json
+test-reports/

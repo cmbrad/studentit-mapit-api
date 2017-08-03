@@ -37,8 +37,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTHENTICATION_BACKENDS = ['mapit.bookit.authentication.BookItBackend']
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'mapit.bookit.authentication.BookItBackend',
