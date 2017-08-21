@@ -18,7 +18,7 @@ class ViewsRouter(routers.DefaultRouter):
         original `get_routes` code.
         """
         if issubclass(viewset, viewsets.ViewSetMixin):
-            return super().get_routes(viewset)
+            return super(ViewsRouter, self).get_routes(viewset=viewset)
 
         return []
 
@@ -52,4 +52,4 @@ class ViewsRouter(routers.DefaultRouter):
         ret = format_suffix_patterns(ret, allowed=['json', 'html'])
 
         # Prepend URLs for viewsets and return
-        return super().get_urls() + ret
+        return super(ViewsRouter, self).get_urls() + ret

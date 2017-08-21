@@ -11,7 +11,7 @@ class BookItBackend(authentication.BaseAuthentication):
 
     def authenticate(self, request, username=None, password=None):
         try:
-            self.logger.debug(f'Trying to authenticate user against BookIT with username={username}')
+            self.logger.debug('Trying to authenticate user against BookIT with username={}'.format(username))
             api_client = ApiClient(username, password)
             try:
                 user = User.objects.get(username=username)

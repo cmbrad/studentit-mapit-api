@@ -18,7 +18,8 @@ from pathlib import Path
 # Go up one directory since we're in a module now
 from decouple import config
 
-BASE_DIR = Path(os.path.dirname(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))).resolve()
+BASE_DIR = str(
+    Path(os.path.dirname(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))).resolve())
 
 # Start custom settings
 BOOKIT_USERNAME = config('BOOKIT_USERNAME')
@@ -91,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mapit.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -101,7 +101,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -153,7 +152,6 @@ LOGGING = {
     }
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -167,12 +165,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 # Storage configuration
 AWS_AUTO_CREATE_BUCKET = True
