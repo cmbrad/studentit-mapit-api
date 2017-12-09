@@ -24,6 +24,8 @@ BASE_DIR = str(
 # Start custom settings
 BOOKIT_USERNAME = config('BOOKIT_USERNAME')
 BOOKIT_PASSWORD = config('BOOKIT_PASSWORD')
+
+CORS_ORIGIN_ALLOW_ALL = True
 # End custom settings
 
 
@@ -60,11 +62,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'mapit.bookit',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
